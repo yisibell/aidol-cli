@@ -4,6 +4,7 @@ const inquirer = require('inquirer')
 const ora = require('ora')
 const chalk = require('chalk')
 const symbols = require('log-symbols')
+const handlebars = require('handlebars')
 const { template } = require('../config')
 
 module.exports = function(projectName) {
@@ -16,12 +17,16 @@ module.exports = function(projectName) {
         message: 'Author name ?'
       },
       {
+        name: 'name',
+        message: 'Project name ?'
+      },
+      {
         name: 'description',
         message: 'Project description ?'
       },
       {
         name: 'template',
-        message: 'Use your custom template ? (a git repository address to use your custom template or empty string to use aidol default template)'
+        message: 'Use aidol default template ? (A git repository address to use your custom template or a empty string to use aidol default template)'
       }
 
     ]).then(answers => {
@@ -38,14 +43,31 @@ module.exports = function(projectName) {
             return
           }
 
+          const pck = `${projectName}/package.json`
+          
+          const meta = {
+            name: answers.name || 'aidol',
+            author: answers.author || 'elenh',
+            description: answers.description || 'A personal blog based on aidol.'
+          }
+          
+          if (fs.existsSync(pck)){
+            const content = fs.readFileSync(pck).toString()
+            const result = handlebars.compile(content)(meta)
+            fs.writeFileSync(pck, result)
+          }
+
           spinner.succeed()
           console.log(symbols.success, chalk.green(`${projectName} init completed...`))
-          console.log(symbols.success, chalk.green(`cd ${projectName}`))
-          console.log(symbols.success, chalk.green(`npm install`))
-          console.log(symbols.success, chalk.green(`npm run dev`))
+          
+          if (!answers.template) {
+            console.log(symbols.success, chalk.green(`cd ${projectName}`))
+            console.log(symbols.success, chalk.green(`npm install`))
+            console.log(symbols.success, chalk.green(`npm run dev`))
+          }
         })
       })
   } else {
-    console.log(symbols.error, chalk.red(`the project ${projectName} is exist.`))
+    console.log(symbols.error, chalk.red(`the project [${projectName}] is exist.`))
   }
 }
