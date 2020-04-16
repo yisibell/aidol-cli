@@ -58,7 +58,7 @@ module.exports = function(projectName) {
             pck_json.description = meta.description
             pck_json.author = meta.author
 
-            fs.writeFileSync(pck, JSON.stringify(pck_json))
+            fs.writeFileSync(pck, JSON.stringify(pck_json, null, '\t'))
           }
 
           spinner.succeed()
