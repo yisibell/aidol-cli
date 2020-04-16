@@ -4,7 +4,6 @@ const inquirer = require('inquirer')
 const ora = require('ora')
 const chalk = require('chalk')
 const symbols = require('log-symbols')
-const handlebars = require('handlebars')
 const { template } = require('../config')
 
 module.exports = function(projectName) {
@@ -52,9 +51,14 @@ module.exports = function(projectName) {
           }
           
           if (fs.existsSync(pck)){
-            const content = fs.readFileSync(pck).toString()
-            const result = handlebars.compile(content)(meta)
-            fs.writeFileSync(pck, result)
+            const pck_str = fs.readFileSync(pck).toString()
+            const pck_json = JSON.parse(pck_str)
+            
+            pck_json.name = meta.name
+            pck_json.description = meta.description
+            pck_json.author = meta.author
+
+            fs.writeFileSync(pck, JSON.stringify(pck_json))
           }
 
           spinner.succeed()
