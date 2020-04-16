@@ -17,7 +17,18 @@
     "theme",
     "cli"
   ],
-  "author": "elenh",
+  "author": {
+    "name": "elenh",
+    "email": "yisiwings@163.com"
+  },
+  "homepage": "https://github.com/yisibell/aidol-cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yisibell/aidol-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/yisibell/aidol-cli/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.0.0",

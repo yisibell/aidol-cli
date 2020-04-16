@@ -27,7 +27,7 @@ module.exports = function(projectName) {
     ]).then(answers => {
        
         const repo = answers.template || template.git
-        const spinner = ora('Template is downloading, Please wait a moment...')
+        const spinner = ora('Downloading template, Please wait a moment...')
 
         spinner.start()
 
