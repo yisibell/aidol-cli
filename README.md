@@ -19,3 +19,7 @@ npm install
 npm run dev
 ```
 
+# Demo
+ 
+<a href="http://elenhong.gitee.io/aidol/">去看看</a> 由 **aidol** 生成的效果。
+
