@@ -10,16 +10,16 @@ npm i @aidol/cli -g
 # Usage
 
 ``` bash
-aidol init <projectName>
+$ aidol init <projectName>
 
-cd <projectName>
+$ cd <projectName>
 
-npm install
+$ yarn install
 
-npm run dev
+$ yarn dev
 ```
 
 # Demo
  
-<a href="http://elenhong.gitee.io/aidol/">去看看</a> 由 **aidol** 生成的效果。
+[去看看](https://hongwenqing.com/aidol/) 生成的效果。
 

@@ -6,8 +6,13 @@
   "bin": {
     "aidol": "bin/index.js"
   },
+  "files": [
+    "bin",
+    "command",
+    "config"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "changelogen --release && npm publish --access=public && git push --follow-tags"
   },
   "keywords": [
     "aidol",
@@ -38,5 +43,8 @@
     "inquirer": "^7.1.0",
     "log-symbols": "^3.0.0",
     "ora": "^4.0.3"
+  },
+  "devDependencies": {
+    "changelogen": "^0.5.3"
   }
 }

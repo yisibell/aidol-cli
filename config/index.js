@@ -1,5 +1,5 @@
 module.exports = {
   template: {
-    git: 'https://gitee.com:elenhong/aidol#master'
+    git: 'https://github.com:yisibell/aidol#main'
   }
 }
